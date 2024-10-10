@@ -1,0 +1,9 @@
+.vscode
+backup
+*.bat
+*.backup
+*.exe
+notes
+ROM
+script
+tests

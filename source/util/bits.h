@@ -1,0 +1,20 @@
+#ifndef UTIL_BITS_H_
+#define UTIL_BITS_H_
+
+#include"types.h"
+
+UINT8 LOW(UINT8 n);
+UINT8 HIGH(UINT8 n);
+
+UINT16 LE16(UINT16 n);
+UINT32 LE32(UINT32 n);
+
+UINT8 BIT(UINT8 n, UINT32 bit);
+UINT16 BIT(UINT16 n, UINT32 bit);
+UINT32 BIT(UINT32 n, UINT32 bit);
+
+UINT8 BYTE(UINT8 *pBuffer);
+UINT16 SHORT(UINT8 *pBuffer);
+UINT32 WORD(UINT8 *pBuffer);
+
+#endif // UTIL_BITS_H_

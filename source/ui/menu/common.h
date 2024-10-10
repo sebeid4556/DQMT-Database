@@ -1,0 +1,10 @@
+#ifndef UI_MENU_COMMON_H_
+#define UI_MENU_COMMON_H_
+
+#include"../../util/util.h"
+
+enum MENU_IDS {ID_MAIN_MENU = 0, ID_SEARCH_MONSTER, ID_SEARCH_TRAIT, ID_SEARCH_SKILL, ID_SEARCH_MOVE};
+
+const UINT8 DEFAULT_MENU_ID = ID_MAIN_MENU;
+
+#endif // UI_MENU_COMMON_H_
