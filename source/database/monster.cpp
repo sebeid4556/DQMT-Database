@@ -5,7 +5,7 @@
 #include"../util/util.h"
 #include"monster.h"
 
-const CHAR *kMonstersBinPath = "data/monsters.bin";
+const CHAR *kMonstersBinPath = "../data/monsters.bin";
 
 MonsterDatabase::MonsterDatabase()
 {        

@@ -13,8 +13,8 @@
 void createMonsterStatWString(Database *pDb, WCHAR *pOut, UINT16 id)
 {    
     MonsterDatabaseEntry *pMonster = pDb->Monsters.getByID(id);        
-    WCHAR *types[] = {L"", L"スライム", L"ドラゴン", L"自然", L"魔獣", L"物質", L"悪魔", L"ゾンビ", L"???"};
-    WCHAR *ranks[] = {L"", L"F", L"E", L"D", L"C", L"B", L"A", L"S", L"SS"};        
+    const WCHAR *types[] = {L"", L"スライム", L"ドラゴン", L"自然", L"魔獣", L"物質", L"悪魔", L"ゾンビ", L"???"};
+    const WCHAR *ranks[] = {L"", L"F", L"E", L"D", L"C", L"B", L"A", L"S", L"SS"};        
     swprintf(pOut, L"NAME: %ls   %ls係   RANK: %ls   位階: %3ld\n==========================================================================================\n\nステータス:\n__________________\n\n  最大HP: %4ld\n\n  最大MP: %4ld\n\n  攻撃力: %4ld\n\n  守備力: %4ld\n\nすばやさ: %4ld\n\nかしこさ: %4ld", 
         pMonster->name,
         types[pMonster->species],
@@ -34,7 +34,7 @@ void createMonsterTraitWString(Database *pDb, WCHAR *pOut, UINT16 id)
     MonsterDatabaseEntry *pMonster = pDb->Monsters.getByID(id);    
     swprintf(pOut, L"\n\n\n特性:\n__________________\n\n");
     UINT16 size_trait_id = 0;
-    switch(pDb->Monsters.getByID(id)->size)
+    switch(pMonster->size)
     {
         case 0:
             size_trait_id = 0x108;
@@ -48,8 +48,7 @@ void createMonsterTraitWString(Database *pDb, WCHAR *pOut, UINT16 id)
         case 6: case 7: case 8:
             size_trait_id = 0x1D;
             break;
-        default:
-            printf("This code is FUCKED. pDb->Monsters.getByID(id)->size = %d\n", pDb->Monsters.getByID(id)->size);
+        default:            
             break;
     }
     swprintf((pOut + wcslen(pOut)), L"[%3ld] %ls\n\n", size_trait_id, pDb->Traits.getByID(size_trait_id)->name);
@@ -133,7 +132,7 @@ void TEST()
 
     TTF_Font *font = TTF_OpenFont("resource/font/KosugiMaru-Regular.ttf", 20);
 
-    Database Db;
+    Database *Db = Database::getInstance();
     //UINT16 monster_id = 349;
     //UINT16 monster_id = 358;
     UINT16 monster_id = 243;
@@ -142,9 +141,9 @@ void TEST()
     WCHAR wstat[0x100];
     WCHAR wtrait[0x100];
     WCHAR wskill[0x100];
-    createMonsterStatWString(&Db, wstat, monster_id);
-    createMonsterTraitWString(&Db, wtrait, monster_id);
-    createMonsterSkillWString(&Db, wskill, monster_id);    
+    createMonsterStatWString(Db, wstat, monster_id);
+    createMonsterTraitWString(Db, wtrait, monster_id);
+    createMonsterSkillWString(Db, wskill, monster_id);    
 
     SDL_Surface *pStatSurface = TTF_RenderUNICODE_Blended_Wrapped(font, (const Uint16 *)wstat, SDL_Color{255, 255, 255, 255}, 920);
     SDL_Surface *pTraitSurface = TTF_RenderUNICODE_Blended_Wrapped(font, (const Uint16 *)wtrait, SDL_Color{255, 255, 255, 255}, 300);

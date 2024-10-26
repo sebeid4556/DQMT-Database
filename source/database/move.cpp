@@ -4,7 +4,7 @@
 #include"../util/util.h"
 #include"move.h"
 
-const CHAR *kMoveBinPath = "data/moves.bin";
+const CHAR *kMoveBinPath = "../data/moves.bin";
 
 MoveDatabase::MoveDatabase()
 {

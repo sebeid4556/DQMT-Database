@@ -2,35 +2,34 @@
 #include"state.h"
 #include"menu/all.h"
 
+#include<exception>
+
 Application::Application()
 {
     pUI = new UIManager();
-    pEvents = new EventManager();
+    pEvents = new EventManager();    
 
     sAppState.state = APP_RUN;
     
     pUI->start();
     OK("Start UI");
     
-    initAllMenus();
+    //initAllMenus();
     OK("Add Menus");    
 }
 
 //close UI and free UI & Events objects
 Application::~Application()
-{    
-    pUI->end();
+{        
     OK("End UI");
 
-    delete pUI;
+    LOG(std::cout, "deleting pEvents");
     delete pEvents;
 
-    OK("End App");
-}
+    LOG(std::cout, "deleting pUI");    
+    delete pUI;
 
-void Application::initAllMenus()
-{
-    pUI->addMenu(new MainMenu());
+    OK("End App");
 }
 
 void Application::run()
@@ -46,6 +45,7 @@ void Application::run()
         {
             sAppState.state = pEvents->getNewAppState();
         }
+        pUI->update();
         pUI->draw();  //draw the updated scene
     }
 }

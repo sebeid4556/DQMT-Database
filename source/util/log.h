@@ -1,25 +1,19 @@
 #ifndef UTIL_LOG_H_
 #define UTIL_LOG_H_
 
-#include<stdio.h>
-#include<cstdarg>
+#include"../config/config.h.in"
 
-#include"types.h"
+#include<iostream>
+#include"console.h"
 
-//WORK IN PROGRESS
-
-class Log
-{
-    public:
-        UINT32 MAX_LOG_LENGTH = 256;
-
-        Log(const CHAR *pPath);
-        ~Log();
-        void log(const CHAR *pFmt, ...);
-        void setOutputToTerminal(bool flag);
-    private:
-        bool output_to_console = false;
-        FILE *pFile;
-};
+#ifdef DEBUG
+#define LOG(o, s) o << "[" << CONSOLE_GREEN << "LOG" << CONSOLE_WHITE << "]" << s << std::endl
+#define LOGS(s) std::cout << "[" << CONSOLE_GREEN << "LOG" << CONSOLE_WHITE << "]" << s << std::endl
+#define LOG_ERROR(s) std::cerr << "[" << CONSOLE_RED << "ERROR" << CONSOLE_WHITE << "]In " << __FILE__ << ":\n\tLine " << __LINE__ << ": " << s << std::endl
+#endif // DEBUG
+#ifndef DEBUG
+#define LOG(o, s) do{}while(false)    //do nothing
+#define LOG_ERROR(s) do{}while(false)
+#endif // DEBUG
 
 #endif // UTIL_LOG_H_

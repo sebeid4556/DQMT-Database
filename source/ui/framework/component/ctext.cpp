@@ -9,18 +9,23 @@ const INT32 CText::s_DEFAULT_FONT_SIZE = UIManager::DEFAULT_FONT_SIZE;
 
 CText::CText(const WCHAR *pWstr)
 {
+    name = "CText";
+
+    setFontSize(DEFAULT_FONT_SIZE);
     this->setText(pWstr);
 }
 
 CText::CText(const WCHAR *pWstr, INT32 font_size)
 {
+    name = "CText";
+
     setFontSize(font_size);
     this->setText(pWstr);
 }
 
 CText::~CText()
 {
-    ;
+    ;    
 }
 
 void CText::update(SDL_Event *pEvent)
@@ -42,8 +47,8 @@ void CText::setText(const WCHAR *pWstr)
     {        
         fatalError(TTF_GetError(), "CText::setText");
     }
-
-    setSize(pSurface->w, pSurface->h);
+    
+    setSize(pSurface->w, pSurface->h);        
 
     if(pTextTexture)
     {        

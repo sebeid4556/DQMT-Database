@@ -17,10 +17,14 @@ void UIFrameworkSubject::detach(UIFrameworkObserver *pObserver)
 
 void UIFrameworkSubject::notify(SDL_Event *pEvent)
 {
-    std::list<UIFrameworkObserver *>::iterator iter = lObservers.begin();
+    /*std::list<UIFrameworkObserver *>::iterator iter = lObservers.begin();
     while(iter != lObservers.end())
     {
         (*iter)->update(pEvent);
         iter++;
+    }*/
+    for(auto const& observer : lObservers)
+    {
+        observer->update(pEvent);
     }
 }

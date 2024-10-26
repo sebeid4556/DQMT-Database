@@ -6,5 +6,8 @@
 #include"error.h"
 #include"bits.h"
 #include"console.h"
+#include"log.h"
+#include"string.h"
+#include"color.h"
 
 #endif // UTIL_UTIL_H_

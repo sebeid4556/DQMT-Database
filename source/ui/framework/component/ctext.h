@@ -20,10 +20,10 @@ class CText : public UIComponent
         void setWrapLength(UINT32 wrap_length);
         void setFontSize(INT32 font_size);
     private:
-        WCHAR text[CText::s_MAX_TEXT_LENGTH] = {NULL};
+        WCHAR text[CText::s_MAX_TEXT_LENGTH] = {0};
         UINT32 wrap_length = s_DEFAULT_WRAP_LENGTH;     
         INT32 font_size = s_DEFAULT_FONT_SIZE;   
-        SDL_Color *pTextColor = (SDL_Color *)&s_DEFAULT_TEXT_COLOR;;
+        SDL_Color *pTextColor = (SDL_Color *)&s_DEFAULT_TEXT_COLOR;
         SDL_Texture *pTextTexture = NULL;
 };
 

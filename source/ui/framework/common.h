@@ -6,8 +6,12 @@
 #include<string.h>
 #include<memory.h>
 
+#include<iostream>
 #include<vector>
 #include<list>
+#include<map>
+#include<sstream>
+#include<iomanip>
 
 #include<SDL2/SDL.h>
 #include<SDL2/SDL_image.h>

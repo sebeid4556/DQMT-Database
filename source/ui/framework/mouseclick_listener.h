@@ -13,4 +13,22 @@ class MouseClickListener : public UIFrameworkSubject
         ;
 };
 
+class MouseWheelListener : public UIFrameworkSubject
+{
+    public:
+        MouseWheelListener();
+        virtual ~MouseWheelListener();
+    private:
+        ;
+};
+
+class MouseMotionListener : public UIFrameworkSubject
+{
+    public: 
+        MouseMotionListener();
+        virtual ~MouseMotionListener();
+    private:
+        ;
+};
+
 #endif // UI_FRAMEWORK_MOUSECLICK_LISTENER_H_

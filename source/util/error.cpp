@@ -3,6 +3,7 @@
 
 #include"types.h"
 #include"error.h"
+#include"log.h"
 
 void LINE()
 {
@@ -18,7 +19,10 @@ void error(const CHAR *pMsg, const CHAR *pPrefix)
 
 void fatalError(const CHAR *pMsg)
 {
+    LINE();
     printf("[!]ERROR: %s\n", pMsg);
+    LINE();
+    throw("wtf");   //for gdb
     exit(1);
 }
 
@@ -27,5 +31,6 @@ void fatalError(const CHAR *pMsg, const CHAR *pPrefix)
     LINE();
     printf("[!]ERROR: %s(): %s\n", pPrefix, pMsg);
     LINE();
+    throw("wtf");   //for gdb
     exit(1);
 }

@@ -8,13 +8,22 @@ MenuContext::MenuContext()
 //free each component
 MenuContext::~MenuContext()
 {
-    for(UINT32 i = 0;i < vComponents.size();i++)
+    LOG_ERROR("are ya causing the bug, buster?");
+    std::cout << "vComponents.size() = " << vComponents.size() << std::endl;
+    /*for(UINT32 i = 0;i < vComponents.size();i++)
     {
         if(vComponents.at(i))
         {
             delete vComponents.at(i);
         }
+    }*/
+    int n = 0;
+    for(auto const& component : vComponents)
+    {        
+        std::cout << "component " << n++ << "\t(" << component->name << ")" <<  std::endl;
+        delete component;        
     }
+    LOG_ERROR("guess not");
 }
 
 void MenuContext::addComponent(UIComponent *pComponent)
@@ -28,18 +37,17 @@ const std::vector<UIComponent *> &MenuContext::getContext()
     return vComponents;
 }
 
-bool MenuContext::shouldGoToNextMenu()
-{
-    return gotoNextMenu;
-}
-
-UINT8 MenuContext::getNextMenuID()
+menu::MenuID MenuContext::getNextMenuID()
 {
     return nextMenuID;
 }
 
-void MenuContext::reset()
+void MenuContext::setNextMenuID(menu::MenuID id)
 {
-    gotoNextMenu = false;
-    nextMenuID = DEFAULT_MENU_ID;
+    nextMenuID = id;
+}
+
+void MenuContext::reset()
+{    
+    nextMenuID = menu::ID_MENU_NONE;
 }

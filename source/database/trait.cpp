@@ -5,7 +5,7 @@
 #include"trait.h"
 #include"../util/util.h"
 
-const CHAR *kTraitBinPath = "data/traits.bin";
+const CHAR *kTraitBinPath = "../data/traits.bin";
 
 TraitDatabase::TraitDatabase()
 {

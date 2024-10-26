@@ -5,18 +5,16 @@
 #include"ui_manager.h"
 #include"event_manager.h"
 
-typedef struct AppState
+typedef struct
 {
     UINT8 state;
-};
+}AppState;
 
 class Application 
 {
     public:        
-        //enum APP_STATES {APP_RUN = 0, APP_STOP};
         Application();
-        ~Application();
-        void initAllMenus();        
+        ~Application();           
         void run();        
     private:
         AppState sAppState;

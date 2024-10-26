@@ -12,8 +12,13 @@
 
 #define FILE_RET_OK -1
 
+#define MAX_PATH 256
+
 const extern CHAR *kFileErrorMessages[NUM_FILE_ERRORS];
 
 INT32 loadFileIntoBuffer(CHAR *pPath, UINT8 **pBuffer, UINT32 *pSize);
+UINT8 *loadFileIntoBufferEX(const CHAR *pPath, UINT32 *pSize);
+
+INT32 getExtentionIndex(const CHAR *pPath);
 
 #endif // UTIL_FILE_H_

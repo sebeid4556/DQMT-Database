@@ -4,7 +4,7 @@
 #include"../util/util.h"
 #include"skill.h"
 
-const CHAR *kSkillBinPath = "data/skills.bin";
+const CHAR *kSkillBinPath = "../data/skills.bin";
 
 SkillDatabase::SkillDatabase()
 {

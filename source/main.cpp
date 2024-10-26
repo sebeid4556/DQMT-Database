@@ -15,6 +15,32 @@
 #include<iostream>
 #include"ui/test.hpp"
 
+#include"test/test.h"
+
+void test()
+{
+    std::vector<Base*> vBases;
+    std::map<int, Base*> mBases;
+
+    LOG(std::cout, "adding Derived to vBases");
+    Derived *pDerived = new Derived();
+    printf("pDerived = 0x%08X\n", pDerived);
+    //vBases.push_back(pDerived);
+    mBases.insert(std::pair<int, Base*>(0, pDerived));
+
+    LOG(std::cout, "deleting elements from vBases");
+    for(auto const& element : vBases)
+    {
+        delete element;
+    }
+    for(auto const& element : mBases)
+    {
+        printf("element.second = 0x%08X\n", element.second);
+        delete element.second;
+    }
+    LOG(std::cout, "operation complete");
+}
+
 void showMonsterInfo(MonsterDatabaseEntry *pMonster)
 {
     printf("ID: %d\n", pMonster->id);
@@ -46,15 +72,17 @@ void lookUpMonster(Database *pDb)
 
 int main(int argc, char *argv[])
 {    
+    test();
+
     //constructDatabase();    
 
     FrameworkTEST();
     //TEST();
     return 0;
 
-    Database Db;
+    //Database Db;
     
-    lookUpMonster(&Db);    
+    lookUpMonster(Database::getInstance());
 
     return 0;
 }
