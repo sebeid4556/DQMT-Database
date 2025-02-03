@@ -1,6 +1,5 @@
 # DQMT-Database
 This application is a database for monster in DQMT (Dragon Quest Monsters Terry's Wonderland 3D)
-Select the monster from the left to see their stats in the main window.
 ![Alt text](screenshot/demo.gif)
 
 # How to Use
