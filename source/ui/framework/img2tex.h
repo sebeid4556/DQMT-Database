@@ -1,6 +1,5 @@
+#pragma once
 #include"common.h"
-
-bool checkExtention(const CHAR *pPath, const CHAR *pExtension);
 
 SDL_Texture *loadPNG(const CHAR *pPath);
 SDL_Surface *loadBCLIM(const CHAR *pPath);

@@ -19,7 +19,9 @@ typedef struct
     CText *max_def_value;
     CText *max_spd_value;
     CText *max_int_value;
+    CText *size_trait_id;   //added
     CText *size_trait;
+    CText *trait_ids[MAX_MONSTER_TRAITS];   //added
     CText *traits[MAX_MONSTER_TRAITS];
     CText *resistance[NUM_RESISTANCE_TYPES];
     CText *resistance_values[NUM_RESISTANCE_TYPES];
@@ -144,6 +146,27 @@ class MonsterList : public CSuperImage
         void updateTexture();
 };
 
+class TraitList : public CSuperImage
+{
+    public:
+        TraitList(INT32 row_w, INT32 row_h, INT32 rows, INT32 gap, MainMenu *pMenuObj, UINT16 top_trait_id);
+        ~TraitList();
+        void setTopTraitID(UINT16 trait_id);
+        void onClick() override;
+        void update(SDL_Event *pEvent) override;                
+    private:        
+        UINT32 row_focus = 0;
+        UINT32 last_row_focus;
+        
+        INT32 row_w, row_h;
+        INT32 rows, gap;        
+        UINT16 top_trait_id = 1;
+        MainMenu *pMenuObj = NULL;
+        std::vector<UINT16> vTraitIDs;        
+
+        void updateTexture();
+};
+
 class DebugInfo: public CSuperImage
 {
     public:
@@ -167,6 +190,7 @@ class MainMenu : public MenuContext
         friend class GotoSearchButton;
         friend class SearchButton;
         friend class MonsterList;
+        friend class TraitList;
     private:                
         UINT16 monster_id = 0x0000;   
         UINT16 monster_id_last  = 0x02BD;          

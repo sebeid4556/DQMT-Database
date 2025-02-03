@@ -7,23 +7,14 @@ MenuContext::MenuContext()
 
 //free each component
 MenuContext::~MenuContext()
-{
-    LOG_ERROR("are ya causing the bug, buster?");
-    std::cout << "vComponents.size() = " << vComponents.size() << std::endl;
-    /*for(UINT32 i = 0;i < vComponents.size();i++)
-    {
-        if(vComponents.at(i))
-        {
-            delete vComponents.at(i);
-        }
-    }*/
+{    
+    std::cout << "Freeing " << vComponents.size() << " components" << std::endl;
     int n = 0;
     for(auto const& component : vComponents)
     {        
         std::cout << "component " << n++ << "\t(" << component->name << ")" <<  std::endl;
         delete component;        
-    }
-    LOG_ERROR("guess not");
+    }    
 }
 
 void MenuContext::addComponent(UIComponent *pComponent)

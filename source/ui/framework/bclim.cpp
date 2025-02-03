@@ -123,16 +123,16 @@ SDL_Surface *loadBCLIMSurface(const CHAR *pPath)
     BclimParser Icon(pPath);
     
     SDL_Surface *pSur = SDL_CreateRGBSurface(0, Icon.getWidth(), Icon.getHeight(), 16, 0xF000, 0x0F00, 0x00F0, 0x000F);    
-    if(!pSur) fatalError(SDL_GetError(), "loadBCLIM");
+    if(!pSur) fatalError(SDL_GetError(), "loadBCLIMSurface");
 
     SDL_Texture *pTex;       
     UINT16 color; 
     RGBA4444 *pixel;
     UINT32 pos;
 
-    if(SDL_LockSurface(pSur)) fatalError(SDL_GetError(), "loadBCLIM");
+    if(SDL_LockSurface(pSur)) fatalError(SDL_GetError(), "loadBCLIMSurface");
 
-    const char *pFormatName = SDL_GetPixelFormatName(pSur->format->format);
+    //const char *pFormatName = SDL_GetPixelFormatName(pSur->format->format);
     //printf("PIXEL FORMAT: %s\n", pFormatName);
 
     //printf("ICON: %d x %d px\n", Icon.getWidth(), Icon.getHeight());

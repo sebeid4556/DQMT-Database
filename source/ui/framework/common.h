@@ -12,6 +12,7 @@
 #include<map>
 #include<sstream>
 #include<iomanip>
+#include<filesystem>
 
 #include<SDL2/SDL.h>
 #include<SDL2/SDL_image.h>

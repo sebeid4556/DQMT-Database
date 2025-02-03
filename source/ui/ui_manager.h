@@ -7,11 +7,12 @@
 #include"menu_context.h"
 #include"menu/all.h"
 
+#include"resource_manager.h"
+
 class UIManager
 {
-    public:
-        //const CHAR DEFAULT_FONT_PATH[MAX_PATH] = "../resource/font/KosugiMaru-Regular.ttf";
-        const std::string DEFAULT_FONT_PATH = "../resource/font/KosugiMaru-Regular.ttf";
+    public:        
+        const std::string DEFAULT_FONT_PATH = "KosugiMaru-Regular.ttf";
         const static INT32 DEFAULT_FONT_SIZE = 20;
         const static UINT32 DEFAULT_WINDOW_WIDTH = 1600;
         const static UINT32 DEFAULT_WINDOW_HEIGHT = 900;

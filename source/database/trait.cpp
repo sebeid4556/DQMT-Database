@@ -33,3 +33,8 @@ TraitDatabaseEntry *TraitDatabase::getByID(UINT16 id)
     if(id >= vTraits.size()) return NULL;
     return vTraits.at(id);
 }
+
+UINT32 TraitDatabase::getNumEntries()
+{
+    return num_entries;
+}

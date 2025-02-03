@@ -2,16 +2,7 @@
 #include"component/component.h"
 #include"bclim.h"
 
-bool checkExtension(const CHAR *pPath, const CHAR *pExtension)
-{
-    UINT32 len = strlen(pPath);
-    UINT32 ext_len = strlen(pExtension);
-    if(strncmp(pPath+(len - ext_len), pExtension, ext_len))
-    {
-        return false;
-    }
-    return true;
-}
+#include"../resource_manager.h"
 
 SDL_Texture *loadPNG(const CHAR *pPath)
 {
@@ -76,30 +67,8 @@ SDL_Texture *img2tex(const CHAR *pPath, SDL_Surface **pSurfaceOut)
     {
         fatalError("pSurfaceOut is NULL", "img2tex");
     }
-    
-    /*CHAR *pFileExt = (CHAR *)(pPath + getExtentionIndex(pPath));
 
-    if(!pFileExt)
-    {
-        fatalError("File extension missing?", "loadImageTexture");
-    }*/
-
-    SDL_Surface *pSurface = NULL;    
-
-    //if(strncmp(pFileExt, ".png", strlen(pFileExt)) == 0)
-    /*if(checkExtension(pPath, ".png"))
-    {
-        pSurface = img2surface(pPath);
-    }
-    //else if(strncmp(pFileExt, ".bclim", strlen(pFileExt)) == 0)
-    else if(checkExtension(pPath, ".png"))
-    {
-        fatalError("Loading BCLIM into SDL_Surface not implemented yet", "img2tex");
-    }
-    else
-    {
-        fatalError("Unsupported file extension", "img2tex");
-    }*/
+    SDL_Surface *pSurface = NULL;
 
     pSurface = img2surface(pPath);
 
@@ -118,10 +87,9 @@ SDL_Texture *img2tex(const CHAR *pPath, SDL_Surface **pSurfaceOut)
     return pTexture;
 }
 
-//only supports PNG at the moment
 SDL_Surface *img2surface(const CHAR *pPath)
 {
-    if(strlen(pPath) > MAX_PATH)
+    /*if(strlen(pPath) > MAX_PATH)
     {
         fatalError("File path is too long");
     }
@@ -148,5 +116,7 @@ SDL_Surface *img2surface(const CHAR *pPath)
         fatalError("unsupported file extention");
     }
 
-    return pSurface;
+    return pSurface;*/    
+
+    return ResourceManager::getInstance()->getImage(std::string(pPath))->getCopySurface();
 }

@@ -3,6 +3,7 @@ backup
 *.bat
 *.backup
 *.exe
+Makefile
 notes
 ROM
 script

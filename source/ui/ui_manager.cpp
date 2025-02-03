@@ -5,11 +5,11 @@
 #include"framework/component/component.h"
 
 UIManager::UIManager()
-{    
+{        
     initSDL();    
     
     loadFont(DEFAULT_FONT_PATH.c_str(), DEFAULT_FONT_SIZE);
-    UIComponent::setFont(pFont);
+    UIComponent::setFont(pFont);    
 
     OK("Initialize UI");
 
@@ -21,8 +21,7 @@ UIManager::~UIManager()
 {
     LOG(std::cout, "deleteing menus");
     for(auto const& menu : mMenuList)
-    {
-        std::cout << "deleting " << menu.second << std::endl;
+    {        
         delete menu.second;
     }
 
@@ -33,14 +32,32 @@ UIManager::~UIManager()
 
 void UIManager::start()
 {
-    if(SDL_CreateWindowAndRenderer(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT, SDL_WINDOW_SHOWN, &pWindow, &pRenderer))
+    UINT32 window_flags = SDL_WINDOW_SHOWN;
+    //window_flags |= SDL_WINDOW_ALLOW_HIGHDPI;
+    //window_flags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
+
+    INT32 window_w = DEFAULT_WINDOW_WIDTH;
+    INT32 window_h = DEFAULT_WINDOW_HEIGHT;
+
+    SDL_DisplayMode displayMode;
+    if(SDL_GetDesktopDisplayMode(1, &displayMode))
+    {
+        error(SDL_GetError(), "UIManager::start");
+    }
+    else
+    {
+        //window_w = displayMode.w;
+        //window_h = displayMode.h;
+    }
+
+    if(SDL_CreateWindowAndRenderer(window_w, window_h, window_flags, &pWindow, &pRenderer))
     {
         fatalError(SDL_GetError(), "UIManager::start");
     }
 
-    SDL_SetWindowTitle(pWindow, "DQMT-Database");
-    //SDL_SetWindowBordered(pWindow, SDL_FALSE);
-    //SDL_SetWindowFullscreen(pWindow, SDL_TRUE);    
+    SDL_SetWindowSize(pWindow, window_w, window_h);
+
+    SDL_SetWindowTitle(pWindow, "DQMT-Database");  
 
     UIComponent::setRenderer(pRenderer);    //set renderer to be shared across all components
     OK("Set UIComponent::pRenderer");
@@ -78,10 +95,8 @@ void UIManager::update()
 {
     menu::MenuID next_menu_id = pMenu->getNextMenuID();
     if(next_menu_id != menu::ID_MENU_NONE)
-    {
-        //LOG(std::cout, "transitioning menus!");
-        printf("going from menu %d to %d\n", menu_id, next_menu_id);
-        //pMenu->setNextMenuID(menu::ID_MENU_NONE);
+    {        
+        printf("going from menu %d to %d\n", menu_id, next_menu_id);        
         pMenu->reset();
         loadMenu(next_menu_id); //set current menu to one corresponding to next_menu_id
     }
@@ -135,15 +150,7 @@ void UIManager::initSDL()
 
 void UIManager::loadFont(const CHAR *pPath, INT32 size)
 {
-    if(strlen(pPath) > MAX_PATH)
-    {
-        fatalError("font path too long", "UIManager::loadFont");
-    }
-    pFont = TTF_OpenFont(pPath, size);
-    if(!pFont)
-    {
-        fatalError(TTF_GetError(), "UImanager::laodFont");
-    }
+    pFont = ResourceManager::getInstance()->getFont(pPath)->getTTF();
 }
 
 void UIManager::waitFrame()

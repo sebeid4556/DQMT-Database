@@ -29,7 +29,7 @@ void GotoSearchButton::onClick()
 
 //=====================================================================================================================
 
-SearchButton::SearchButton(MainMenu *pMenuObj) : CButton("../resource/test_button3.png", "../resource/test_button2.png")
+SearchButton::SearchButton(MainMenu *pMenuObj) : CButton("test_button3.png", "test_button2.png")
 {
     this->pMenuObj = pMenuObj;
     setSize(SEARCH_BUTTON_WIDTH, SEARCH_BUTTON_HEIGHT);
@@ -75,7 +75,7 @@ void Window::createWindow()
     INT32 hori_len = w - MINIMUM_WIDTH;
     INT32 vert_len = h - MINIMUM_HEIGHT;
 
-    std::string img_corner = "../resource/";
+    std::string img_corner = "";
     INT32 flip_top_left = (INT32)NULL;
     INT32 flip_bottom_right = (INT32)NULL;
 
@@ -97,19 +97,19 @@ void Window::createWindow()
             break;
     }
     addImage(img_corner.c_str(), {0, 0, 100, 100}, flip_top_left);    //top left
-    addImage("../resource/popup_side1.png", {100, 0, hori_len, 100});    //top side
-    addImage("../resource/popup_corner2.png", {100+hori_len, 0, 100, 100});  //top right
-    addImage("../resource/popup_side2.png", {0, 100, 100, vert_len});    //left side
-    addImage("../resource/popup_pane1.png", {100, 100, hori_len, vert_len});  //middle section
-    addImage("../resource/popup_side2.png", {100+hori_len, 100, 100, vert_len}, FLIP_HORIZONTAL); //right side
-    addImage("../resource/popup_corner2.png", {0, 100+vert_len, 100, 100}, FLIP_HORIZONTAL | FLIP_VERTICAL); //bottom left
-    addImage("../resource/popup_side1.png", {100, 100+vert_len, hori_len, 100}, FLIP_VERTICAL);   //bottom side
+    addImage("popup_side1.png", {100, 0, hori_len, 100});    //top side
+    addImage("popup_corner2.png", {100+hori_len, 0, 100, 100});  //top right
+    addImage("popup_side2.png", {0, 100, 100, vert_len});    //left side
+    addImage("popup_pane1.png", {100, 100, hori_len, vert_len});  //middle section
+    addImage("popup_side2.png", {100+hori_len, 100, 100, vert_len}, FLIP_HORIZONTAL); //right side
+    addImage("popup_corner2.png", {0, 100+vert_len, 100, 100}, FLIP_HORIZONTAL | FLIP_VERTICAL); //bottom left
+    addImage("popup_side1.png", {100, 100+vert_len, hori_len, 100}, FLIP_VERTICAL);   //bottom side
     addImage(img_corner.c_str(), {100+hori_len, 100+vert_len, 100, 100}, flip_bottom_right);   //bottom right       
 
     if(decorate)
     {
-        addImage("../resource/top_text_part1_dark.png", {10, 10, (INT32)(MINIMUM_WIDTH * 1.5), 80});
-        addImage("../resource/top_text_part2_dark.png", {10+(INT32)(MINIMUM_WIDTH * 1.5), 10, w-(INT32)(MINIMUM_WIDTH * 1.5)-20, 35});
+        addImage("top_text_part1_dark.png", {10, 10, (INT32)(MINIMUM_WIDTH * 1.5), 80});
+        addImage("top_text_part2_dark.png", {10+(INT32)(MINIMUM_WIDTH * 1.5), 10, w-(INT32)(MINIMUM_WIDTH * 1.5)-20, 35});
 
         if(title != L"")
         {
@@ -123,9 +123,9 @@ void Window::createWindow()
 
 Line::Line(INT32 length) : CSuperImage(length, 10)
 {
-    addImage("../resource/text_line1.png", {0, 0, 10, 10});
-    addImage("../resource/text_line2.png", {10, 3, length-20, 4});
-    addImage("../resource/text_line1.png", {length-10, 0, 10, 10});
+    addImage("text_line1.png", {0, 0, 10, 10});
+    addImage("text_line2.png", {10, 3, length-20, 4});
+    addImage("text_line1.png", {length-10, 0, 10, 10});
 }
 
 Line::~Line()
@@ -163,7 +163,7 @@ Table::Table(INT32 cell_w, INT32 cell_h, UINT32 rows, UINT32 cols, bool doBackgr
 
 void Table::drawBackground()
 {
-    addImage("../resource/popup_pane1_dark.png", {0, 0, total_w, total_h});
+    addImage("popup_pane1_dark.png", {0, 0, total_w, total_h});
 }
 
 void Table::drawFrame()
@@ -171,12 +171,12 @@ void Table::drawFrame()
     for(INT32 row = 0;row <= rows;row++)
     {
         INT32 y_offset = row * (cell_h);
-        addImage("../resource/text_line2.png", {0, y_offset, total_w, 4});
+        addImage("text_line2.png", {0, y_offset, total_w, 4});
     }
     for(INT32 col = 0;col <= cols;col++)
     {
         INT32 x_offset = col * (cell_w);
-        addImage("../resource/text_line3.png", {x_offset, 0, 4, total_h});
+        addImage("text_line3.png", {x_offset, 0, 4, total_h});
     }
 }
 
@@ -200,15 +200,15 @@ Box::~Box()
 
 void Box::drawBackground()
 {
-    addImage("../resource/popup_pane1_dark.png", {0, 0, w,  h});
+    addImage("popup_pane1_dark.png", {0, 0, w,  h});
 }
 
 void Box::drawFrame()
 {
-    addImage("../resource/text_line2.png", {0, 0, w, 4});
-    addImage("../resource/text_line2.png", {0, h-4, w, 4});
-    addImage("../resource/text_line3.png", {0, 0, 4, h});
-    addImage("../resource/text_line3.png", {w-4, 0, 4, h});
+    addImage("text_line2.png", {0, 0, w, 4});
+    addImage("text_line2.png", {0, h-4, w, 4});
+    addImage("text_line3.png", {0, 0, 4, h});
+    addImage("text_line3.png", {w-4, 0, 4, h});
 }
 
 //=====================================================================================================================
@@ -240,7 +240,7 @@ void MonsterList::updateTexture()
 
     //UINT16 next_monster_id = top_monster_id;
 
-    const static std::string base_path = "../resource/";
+    const static std::string base_path = "";
     const static std::string normal_paths[2] = {"popup2_side1.png", "popup2_side2.png"};
     const static std::string focus_paths[2] = {"popup2_side1_focus2.png", "popup2_side2_focus2.png"};
 
@@ -258,8 +258,8 @@ void MonsterList::updateTexture()
         addImage(path_middle.c_str(), {20, (row_h+gap)*i, row_w-40, row_h});
         addImage(path_sides.c_str(), {20+row_w-40, (row_h+gap)*i, 20, row_h}, FLIP_HORIZONTAL | FLIP_VERTICAL);        
                 
-        //addImage("../resource/iconbase_blue.png", {20, (row_h+gap)*i+5+4, 40, 40});              
-        addImage("../resource/iconbase_blue.png", {20, (row_h+gap)*i+((row_h - 40) / 2), 40, 40});              
+        //addImage("iconbase_blue.png", {20, (row_h+gap)*i+5+4, 40, 40});              
+        addImage("iconbase_blue.png", {20, (row_h+gap)*i+((row_h - 40) / 2), 40, 40});              
         
         UINT32 monster_size = pMenuObj->getMonsterSize(monster_id);                
         //addImage(pMenuObj->getIconPathFromID(monster_id).c_str(), {20, (row_h+gap)*i+5+4, 0, 0}, {0, 0, 40, 40});  //only show top tile
@@ -351,7 +351,149 @@ void MonsterList::update(SDL_Event *pEvent)
 
 //=====================================================================================================================
 
-Cursor::Cursor() : CImage("../resource/cursor1.png")
+TraitList::TraitList(INT32 row_w, INT32 row_h, INT32 rows, INT32 gap, MainMenu *pMenuObj, UINT16 top_trait_id) : CSuperImage(40+row_w, (row_h+gap)*rows)
+{
+    this->rows = rows;
+    this->gap = gap;
+    this->row_w = row_w;
+    this->row_h = row_h;
+
+    this->pMenuObj = pMenuObj;
+
+    UIComponent::mEventListeners->at(EventManager::EVENT_LISTENER_MOUSEWHEEL)->attach(this);
+    UIComponent::mEventListeners->at(EventManager::EVENT_LISTENER_MOUSECLICK)->attach(this);
+    UIComponent::mEventListeners->at(EventManager::EVENT_LISTENER_MOUSEMOTION)->attach(this);
+
+    //setTopTraitID(top_trait_id);
+
+    Database *pDb = Database::getInstance();
+    LINE();
+    printf("Trait db size: %d entries\n", pDb->Traits.getNumEntries());
+    printf("Trait id 0: length %d\n", wcslen(pDb->Traits.getByID(2)->name));
+    LINE();
+}
+
+TraitList::~TraitList()
+{
+    ;
+}
+
+void TraitList::updateTexture()
+{
+    reset();    
+
+    const static std::string base_path = "";
+    const static std::string normal_paths[2] = {"popup2_side1.png", "popup2_side2.png"};
+    const static std::string focus_paths[2] = {"popup2_side1_focus2.png", "popup2_side2_focus2.png"};
+
+    std::string path_sides;
+    std::string path_middle;
+
+    for(INT32 i = 0;i < rows;i++)    
+    { 
+        UINT16 monster_id = vTraitIDs.at(i);
+
+        path_sides =  base_path + ((i == row_focus) ? focus_paths[0] : normal_paths[0]);
+        path_middle = base_path + ((i == row_focus) ? focus_paths[1] : normal_paths[1]);
+
+        addImage(path_sides.c_str(), {0, (row_h+gap)*i, 20, row_h});
+        addImage(path_middle.c_str(), {20, (row_h+gap)*i, row_w-40, row_h});
+        addImage(path_sides.c_str(), {20+row_w-40, (row_h+gap)*i, 20, row_h}, FLIP_HORIZONTAL | FLIP_VERTICAL);        
+                
+        //addImage("iconbase_blue.png", {20, (row_h+gap)*i+5+4, 40, 40});              
+        addImage("iconbase_blue.png", {20, (row_h+gap)*i+((row_h - 40) / 2), 40, 40});              
+        
+        UINT32 monster_size = pMenuObj->getMonsterSize(monster_id);                
+        //addImage(pMenuObj->getIconPathFromID(monster_id).c_str(), {20, (row_h+gap)*i+5+4, 0, 0}, {0, 0, 40, 40});  //only show top tile
+        addImage(pMenuObj->getIconPathFromID(monster_id).c_str(), {20, (row_h+gap)*i+((row_h - 40) / 2), 0, 0}, {0, 0, 40, 40});  //only show top tile
+
+        MonsterDatabaseEntry *pMonster = Database::getInstance()->Monsters.getByID(monster_id);
+        addText((WCHAR *)pMonster->name, {80, (row_h+gap)*i+5+20, 200, 40}, 20, 250);
+    }
+}
+
+void TraitList::setTopTraitID(UINT16 trait_id)
+{
+    this->top_trait_id = trait_id;
+
+    vTraitIDs.clear();
+
+    UINT16 next_trait_id = top_trait_id;
+    for(INT32 i = 0;i < rows;i++)
+    {        
+        vTraitIDs.push_back(next_trait_id);
+        next_trait_id = pMenuObj->getNextMonsterID(next_trait_id);
+    }
+
+    updateTexture();
+}
+
+void TraitList::onClick()
+{
+    printf("Now displaying Monster ID 0x%04dX (%d)\n", vTraitIDs.at(row_focus), row_focus);
+    pMenuObj->loadMonsterInfo(vTraitIDs.at(row_focus));
+}
+
+void TraitList::update(SDL_Event *pEvent)
+{    
+    INT32 x, y;
+    SDL_GetMouseState(&x, &y);     
+    if(!isCoordInside(x, y, rect) || !isVisible())  //if the wheel was scrolled **AND** the mouse is on the button
+    {
+        return;
+    }    
+
+    UINT32 event_type = pEvent->type;
+    if(event_type == SDL_MOUSEMOTION)
+    {        
+        row_focus = (y - this->y) / (row_h+gap);
+
+        if(row_focus != last_row_focus)
+        {
+            updateTexture();
+        }
+
+        last_row_focus = row_focus;        
+    }
+    else if(event_type == SDL_MOUSEBUTTONDOWN)
+    {
+        ;
+    }
+    else if(event_type == SDL_MOUSEBUTTONUP)
+    {        
+        onClick();
+    }
+    else if(event_type == SDL_MOUSEWHEEL)
+    {
+        UINT16 next_monster_id = top_trait_id;    //if the conditionals dont evaluate to true, then default to same monster
+        INT32 isGoingUp = pEvent->wheel.y > 0;
+        if(isGoingUp)
+        {                
+            if(top_trait_id > pMenuObj->monster_id_first) //if monster shown at the top is monster ID 1, then don't scroll
+            {
+                next_monster_id = pMenuObj->getPrevMonsterID(top_trait_id);
+            }
+        }
+        else
+        {        
+            UINT16 bottom_monster_id = next_monster_id;
+            for(INT32 i = 0;i < rows;i++)    //check if the 7th monster from the current one is the last monster or not
+            {
+                bottom_monster_id = pMenuObj->getNextMonsterID(bottom_monster_id);
+                if(!bottom_monster_id) break;   //last monster id reached
+            }
+            if(bottom_monster_id != 0)   //scroll down if there are 7 more monsters to show
+            {
+                next_monster_id = pMenuObj->getNextMonsterID(top_trait_id);
+            }
+        }
+        setTopTraitID(next_monster_id);
+    }    
+}
+
+//=====================================================================================================================
+
+Cursor::Cursor() : CImage("cursor1.png")
 {
     UIComponent::mEventListeners->at(EventManager::EVENT_LISTENER_MOUSEMOTION)->attach(this);
 }
@@ -423,7 +565,8 @@ MainMenu::~MainMenu()
 std::string MainMenu::getIconPathFromID(UINT16 id)
 {
     std::stringstream icon_path;
-    icon_path << "../ROM/raw/romfs/data/MonsterIcon/" << "ic_" << std::setfill('0') << std::setw(4) << id << ".bclim";
+    //icon_path << "../ROM/raw/romfs/data/MonsterIcon/" << "ic_" << std::setfill('0') << std::setw(4) << id << ".bclim";
+    icon_path << "ic_" << std::setfill('0') << std::setw(4) << id << ".bclim";
     return icon_path.str();
 }
 
@@ -503,21 +646,21 @@ void MainMenu::initComponents()
     // BACKGROUND
     //=====================================================================================================================
 
-    CImage *bg = new CImage("../resource/bg1.png");
+    CImage *bg = new CImage("bg1.png");
     bg->setPosition(0, 0);
     bg->setSize(UIManager::DEFAULT_WINDOW_WIDTH, UIManager::DEFAULT_WINDOW_HEIGHT);
     addComponent(bg);
     
-    CImage *top_part1 = new CImage("../resource/top_text_part1.png");
+    CImage *top_part1 = new CImage("top_text_part1.png");
     top_part1->setPosition(0, 0);
     addComponent(top_part1);
 
-    CImage *top_part2 = new CImage("../resource/top_text_part2.png");
+    CImage *top_part2 = new CImage("top_text_part2.png");
     top_part2->setPosition(top_part1->getRect()->w, 0);
     top_part2->setSize(UIManager::DEFAULT_WINDOW_WIDTH - top_part1->getRect()->w, top_part2->getRect()->h);
     addComponent(top_part2);
 
-    CImage *bottom_part = new CImage("../resource/top_text_part2.png");
+    CImage *bottom_part = new CImage("top_text_part2.png");
     bottom_part->flip(FLIP_VERTICAL);
     bottom_part->setPosition(0, UIManager::DEFAULT_WINDOW_HEIGHT - bottom_part->getRect()->h);
     bottom_part->setSize(UIManager::DEFAULT_WINDOW_WIDTH, bottom_part->getRect()->h);
@@ -541,10 +684,8 @@ void MainMenu::initComponents()
     addComponent(name);
 
     monster_info.name = new CText(DEFAULT_TEXT, 25);
-    monster_info.name->setRelativePosition(window, 150, 60);    
-    printf("1. position of monster_info.name = (%d, %d)\n", monster_info.name->getRect()->x, monster_info.name->getRect()->y);
-    addComponent(monster_info.name);
-    printf("2. position of monster_info.name = (%d, %d)\n", monster_info.name->getRect()->x, monster_info.name->getRect()->y);
+    monster_info.name->setRelativePosition(window, 150, 60);        
+    addComponent(monster_info.name);    
 
     monster_info.rank = new CText(DEFAULT_TEXT, 25);
     monster_info.rank->setRelativePosition(window, 500, 60);
@@ -616,7 +757,7 @@ void MainMenu::initComponents()
     resistance_line->setRelativePosition(resistance, -10, 18);
     addComponent(resistance_line);
 
-    CImage *resistance_table_bg = new CImage("../resource/popup_pane1_dark.png");
+    CImage *resistance_table_bg = new CImage("popup_pane1_dark.png");
     resistance_table_bg->setRelativePosition(resistance_line, 0, 20);
     resistance_table_bg->setSize(200, 350);
     addComponent(resistance_table_bg);
@@ -632,7 +773,7 @@ void MainMenu::initComponents()
         addComponent(resistance_name);
 
         CImage *resistance_value_bg;
-        std::string img_path = "../resource/res_weak.png";  //default
+        std::string img_path = "res_weak.png";  //default
         resistance_value_bg = new CImage(img_path.c_str());
         resistance_value_bg->setRelativePosition(resistance_table, resistance_table->cell_w + 4 + (i / 14) * (resistance_table->cell_w*2), (i%14) * resistance_table->cell_h);
         resistance_value_bg->setSize(resistance_table->cell_w, resistance_table->cell_h);
@@ -726,7 +867,7 @@ void MainMenu::initComponents()
     monster_list->setRelativePosition(monster_list_box, 10, (monster_list_box->getRect()->h - monster_list->getRect()->h) / 2);
     addComponent(monster_list);
 
-    GotoSearchButton *goto_search_button = new GotoSearchButton("../resource/test_button3.png", "../resource/test_button2.png", this);
+    GotoSearchButton *goto_search_button = new GotoSearchButton("test_button3.png", "test_button2.png", this);
     goto_search_button->setRelativePosition(result_window, 150, 620);
     goto_search_button->setText(L"SEARCH", 25, SDL_COLOR_WHITE);
     addComponent(goto_search_button);
@@ -736,7 +877,7 @@ void MainMenu::initComponents()
     //=====================================================================================================================
 
     CSuperImage *filter_dark = new CSuperImage(UIManager::DEFAULT_WINDOW_WIDTH, UIManager::DEFAULT_WINDOW_HEIGHT);
-    filter_dark->addImage("../resource/filter3.png", {0, 0, UIManager::DEFAULT_WINDOW_WIDTH, UIManager::DEFAULT_WINDOW_HEIGHT});
+    filter_dark->addImage("filter3.png", {0, 0, UIManager::DEFAULT_WINDOW_WIDTH, UIManager::DEFAULT_WINDOW_HEIGHT});
     group_search.add(filter_dark);
     addComponent(filter_dark);
 
@@ -749,6 +890,8 @@ void MainMenu::initComponents()
     search_button->setRelativePosition(search_window, 100, 100);
     group_search.add(search_button);
     addComponent(search_button);
+
+    //TraitList *trait_list = new TraitList(100, 100, 5, 5, this, 1);
 
     group_search.setVisible(false); //hidden by default
 
@@ -767,7 +910,7 @@ void MainMenu::initComponents()
     group_debug_info.add(debug_info_window);
     group_debug_info.add(debug_info);
 
-    TestButton *toggle_debug_button = new TestButton("../resource/test_button3.png", "../resource/test_button1.png", this);
+    TestButton *toggle_debug_button = new TestButton("test_button3.png", "test_button1.png", this);
     toggle_debug_button->setText(L"DEBUG", 25, SDL_COLOR_WHITE);
     toggle_debug_button->setPosition(800, 50);
     addComponent(toggle_debug_button);
@@ -782,13 +925,13 @@ void MainMenu::initComponents()
     CSuperImage *filter_screen = new CSuperImage(UIManager::DEFAULT_WINDOW_WIDTH, UIManager::DEFAULT_WINDOW_HEIGHT);
     for(INT32 i = 0;i < (UIManager::DEFAULT_WINDOW_HEIGHT/100);i++)
     {
-        filter_screen->addImage("../resource/filter1.png", {0, i*100, UIManager::DEFAULT_WINDOW_WIDTH, 100});
+        filter_screen->addImage("filter1.png", {0, i*100, UIManager::DEFAULT_WINDOW_WIDTH, 100});
     }   
     addComponent(filter_screen);    
 
     CSuperImage *filter_blur = new CSuperImage(UIManager::DEFAULT_WINDOW_WIDTH, UIManager::DEFAULT_WINDOW_HEIGHT);
-    filter_blur->addImage("../resource/filter2.png", {0, 0, UIManager::DEFAULT_WINDOW_WIDTH, 100});
-    filter_blur->addImage("../resource/filter2.png", {0, UIManager::DEFAULT_WINDOW_HEIGHT-100, UIManager::DEFAULT_WINDOW_WIDTH, 100}, FLIP_VERTICAL);
+    filter_blur->addImage("filter2.png", {0, 0, UIManager::DEFAULT_WINDOW_WIDTH, 100});
+    filter_blur->addImage("filter2.png", {0, UIManager::DEFAULT_WINDOW_HEIGHT-100, UIManager::DEFAULT_WINDOW_WIDTH, 100}, FLIP_VERTICAL);
     addComponent(filter_blur);    
 }
 
@@ -857,7 +1000,7 @@ void MainMenu::loadMonsterInfo(UINT16 monster_id)
     monster_info.icon->reset();
     for(INT32 i = 0;i < monster_size;i++)
     {
-        monster_info.icon->addImage("../resource/iconbase_blue.png", {0, i * ICON_BASE_LENGTH, ICON_BASE_LENGTH, ICON_BASE_LENGTH});
+        monster_info.icon->addImage("iconbase_blue.png", {0, i * ICON_BASE_LENGTH, ICON_BASE_LENGTH, ICON_BASE_LENGTH});
     }
     monster_info.icon->addImage(getIconPathFromID(monster_id).c_str(), {0, 0, ICON_BASE_LENGTH, monster_size * ICON_BASE_LENGTH});
     
@@ -866,7 +1009,7 @@ void MainMenu::loadMonsterInfo(UINT16 monster_id)
         monster_info.traits[i]->setVisible(false);
     }
 
-    monster_info.size_trait->setText(pDb->Traits.getByID(size_trait_id)->name);
+    monster_info.size_trait->setText(pDb->Traits.getByID(size_trait_id)->name);    
     for(INT32 i = 0;i < MAX_MONSTER_TRAITS;i++)
     {
         if(!pMonster->traits[i]) break;
@@ -880,7 +1023,7 @@ void MainMenu::loadMonsterInfo(UINT16 monster_id)
         INT32 type = resistance::ORDER[i];
 
         resistance::ResistanceValue val = (resistance::ResistanceValue)Database::getInstance()->Monsters.getByID(monster_id)->resistance[type];        
-        std::string img_path = "../resource/";        
+        std::string img_path = "";        
         switch(val)
         {
             case resistance::WEAK:

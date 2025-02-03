@@ -72,17 +72,11 @@ void lookUpMonster(Database *pDb)
 
 int main(int argc, char *argv[])
 {    
-    test();
+    //test();
 
     //constructDatabase();    
 
     FrameworkTEST();
     //TEST();
-    return 0;
-
-    //Database Db;
-    
-    lookUpMonster(Database::getInstance());
-
     return 0;
 }

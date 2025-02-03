@@ -56,7 +56,7 @@ INT32 loadFileIntoBuffer(CHAR *pPath, UINT8 **pBuffer, UINT32 *pSize)
 
 UINT8 *loadFileIntoBufferEX(const CHAR *pPath, UINT32 *pSize)
 {
-    printf("[+]Loading %s...", pPath);
+    //printf("[+]Loading %s...", pPath);
 
     //check path
     UINT32 len = strlen(pPath);
@@ -87,15 +87,13 @@ UINT8 *loadFileIntoBufferEX(const CHAR *pPath, UINT32 *pSize)
     //read file into buffer    
     pBuffer = (UINT8 *)malloc(size);
     if(!pBuffer) fatalError("malloc() failed", "loadFileIntoBufferEX");
-    //*pBuffer = new UINT8[size];
+
     INT32 r = fread(pBuffer, 1, size, pFp);    
     if(r == 0) fatalError(kFileErrorMessages[FILE_ERROR_FREAD_FAILED], "loadFileIntoBufferEX");
     
     fclose(pFp);
 
-    printf("Done.\n");
-
-    //free(*pBuffer);
+    //printf("Done.\n");    
 
     return pBuffer;
 }
@@ -111,4 +109,29 @@ INT32 getExtentionIndex(const CHAR *pPath)
         }
     }
     return -1;  //not found
+}
+
+//this is buggy; dont use
+bool checkExtension(const CHAR *pPath, const CHAR *pExtension)
+{
+    UINT32 len = strlen(pPath);
+    UINT32 ext_len = strlen(pExtension);
+    if(strncmp(pPath+(len - ext_len), pExtension, ext_len))
+    {
+        return false;
+    }
+    return true;
+}
+
+//use this version instead
+bool checkExtension(const std::string& path, const std::string& extension)
+{
+    UINT32 len = path.length();
+    UINT32 ext_len = extension.length();
+
+    if(path.compare((len-ext_len), ext_len, extension) != 0)
+    {
+        return false;
+    }
+    return true;
 }

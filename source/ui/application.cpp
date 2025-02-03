@@ -14,7 +14,6 @@ Application::Application()
     pUI->start();
     OK("Start UI");
     
-    //initAllMenus();
     OK("Add Menus");    
 }
 
@@ -23,10 +22,10 @@ Application::~Application()
 {        
     OK("End UI");
 
-    LOG(std::cout, "deleting pEvents");
+    LOG(std::cout, "Freeing Event Handler");
     delete pEvents;
 
-    LOG(std::cout, "deleting pUI");    
+    LOG(std::cout, "Freeing UI Manager");    
     delete pUI;
 
     OK("End App");

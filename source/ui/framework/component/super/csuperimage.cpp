@@ -20,12 +20,12 @@ void CSuperImage::init(INT32 w, INT32 h, SDL_PixelFormatEnum format)
 
     if(format == SDL_PIXELFORMAT_RGBA4444)
     {
-        printf("RGBA4444\n");
+        //printf("RGBA4444\n");
         pSurface = SDL_CreateRGBSurface(0, w, h, 16, 0xF000, 0x0F00, 0x00F0, 0x000F);
     }
     else if(format == SDL_PIXELFORMAT_RGBA8888)
     {
-        printf("rgba8888\n");
+        //printf("rgba8888\n");
         pSurface = SDL_CreateRGBSurface(0, w, h, 32, 0xFF000000, 0x00FF0000, 0x0000FF00, 0x000000FF);
     }
     else{
@@ -38,7 +38,7 @@ void CSuperImage::init(INT32 w, INT32 h, SDL_PixelFormatEnum format)
         fatalError(SDL_GetError());
     }
 
-    printf("pSurface (w, h) = (%d, %d)\n", pSurface->w, pSurface->h);
+    //printf("pSurface (w, h) = (%d, %d)\n", pSurface->w, pSurface->h);
 
     setSize(w, h);
 
