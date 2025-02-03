@@ -1,11 +1,18 @@
 # DQMT-Database
 This application is a database for monster in DQMT (Dragon Quest Monsters Terry's Wonderland 3D)
 Select the monster from the left to see their stats in the main window.
-
-# Screenshots
 ![Alt text](screenshot/small.png)
-![Alt text](screenshot/mega.png)
-![Alt text](screenshot/giga.png)
+
+# Technical
+IMPORTANT: To use this software, you must first have a copy of the game. This is because the database is constructed using the raw ROM files of the game. If you have a dumped copy of the game, running the program for the first time will construct the database.
+
+The database is stored in a custom binary format that follows the data structure used by the program.
+
+In the database are 4 sub-databases:
+- Monsters (data/monsters.bin)
+- Traits (data/traits.bin)
+- Moves (data/moves.bin)
+- Skills (data/skills.bin)
 
 # Building
 Setting up environment:
@@ -23,3 +30,7 @@ Run by simply:
 ```
 run
 ```
+# All Screenshots
+![Alt text](screenshot/small.png)
+![Alt text](screenshot/mega.png)
+![Alt text](screenshot/giga.png)
