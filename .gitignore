@@ -1,6 +1,6 @@
 .vscode
 backup
-*.bat
+brun.bat
 *.backup
 *.exe
 Makefile
