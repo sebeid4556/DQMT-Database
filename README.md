@@ -13,7 +13,7 @@ Run the following batch scripts:
 configure
 build
 ```
-Run by using the run script:
+Run by simply:
 ```
 run
 ```
