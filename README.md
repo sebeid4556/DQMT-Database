@@ -1,7 +1,10 @@
 # DQMT-Database
-Look up anything from Dragon Quest Monsters Terry's Wonderland 3D
+This application is a database for monster in DQMT (Dragon Quest Monsters Terry's Wonderland 3D)
+Select the monster from the left to see their stats in the main window.
 
-# Build Instructions
+#
+
+# Building
 Setting up environment:
 - Create folder named sdl2 in root directory (if using a different location, edit CMakeLists.txt accordingly).
 - Download SDL2 to sdl2. Add C:/sdl2/bin to PATH environment variable.

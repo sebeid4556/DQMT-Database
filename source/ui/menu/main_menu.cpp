@@ -899,6 +899,7 @@ void MainMenu::initComponents()
     // DEBUG INFO
     //=====================================================================================================================
 
+#ifdef DEBUG
     Window *debug_info_window = new Window(600, 200, Window::WINDOW_TYPE_SQUARE, true, L"DEBUG");
     debug_info_window->setPosition(0, 0);
     addComponent(debug_info_window);
@@ -914,7 +915,7 @@ void MainMenu::initComponents()
     toggle_debug_button->setText(L"DEBUG", 25, SDL_COLOR_WHITE);
     toggle_debug_button->setPosition(800, 50);
     addComponent(toggle_debug_button);
-
+#endif
     //=====================================================================================================================
     // FILTERS & MISC
     //=====================================================================================================================
