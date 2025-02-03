@@ -95,20 +95,7 @@ void createMonsterSkillWString(Database *pDb, WCHAR *pOut, UINT16 id)
 }
 
 void FrameworkTEST()
-{    
-    /*
-    TODO: 
-        - read up on multithreading (IPC, etc.)
-        - make image respond to mouse click to test event dispatch
-        - create event manager
-        - create app class to handle main loop
-        - make observer able to subscribe to multiple events and also be able to handle each different event
-        - make popup component that combines a bunch of images to create itself
-        - add logs
-        - make button component
-        - make text component
-    */
-
+{
     LINE();
     printf("[+]FRAMEWORK TEST()\n");
 
