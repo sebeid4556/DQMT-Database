@@ -34,10 +34,20 @@ In the database are 4 sub-databases:
 - Moves (data/moves.bin)
 - Skills (data/skills.bin)
 
+I reverse engineered and documented the custom proprietary binary file formats used by the game [here](https://github.com/sebeid4556/Documentation---DQMT-File-Formats/blob/main/Documentation%20-%20DQMT%20File%20Formats.pdf). 
+Essentially, when constructing the database the program reads these files and compiles the data into a convenient format.
+
 A custom graphics framework built upon SDL2 is used to handle rendering. (Located in: source/ui/framework)
 A resource manager is used to provide a central hub for all loaded resoruces, and to manage memory.
 
-The icons for the monsters are loaded directly from the dumped ROM. The icons are in a proprietary image format (.BCLIM files). The program parses and converts each .BCLIM file into a raw pixel buffer at run-time. The .BCLIM file structure/format is documented [here](https://github.com/sebeid4556/Documentation---DQMT-File-Formats/blob/main/Documentation%20-%20DQMT%20File%20Formats.pdf).
+The icons for the monsters are loaded directly from the dumped ROM. The icons are in a proprietary image format (.BCLIM files). The program parses and converts each .BCLIM file into a raw pixel buffer at run-time. The .BCLIM file structure/format is documented [here](https://github.com/sebeid4556/Documentation---DQMT-File-Formats/blob/main/Documentation%20-%20DQMT%20File%20Formats.pdf) as well.
+
+# Future Enhancements
+- Add search functionality
+    - search by name, trait, ID, skill, etc.
+- Add main menu screen
+- Incorporate SQL database instead of binary files
+- Add English translations
 
 # Platforms
 Currently only tested on Windows. SDL2 is cross-platform, so theoretically it should work on other systems as well.
