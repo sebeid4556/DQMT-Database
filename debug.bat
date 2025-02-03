@@ -1,5 +1,5 @@
 cls
 CALL build
-cd debug
+cd build
 gdb main.exe -x "../gdb_commands.txt"
 cd ..
