@@ -1,4 +1,4 @@
-# DQMT-Database
+# DQMT-Monster-Database
 This application is a database of all monsters in DQMT (Dragon Quest Monsters Terry's Wonderland 3D).
 ![Alt text](screenshot/demo.gif)
 
